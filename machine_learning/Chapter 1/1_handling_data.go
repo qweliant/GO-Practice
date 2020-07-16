@@ -1,3 +1,6 @@
+/*
+From Handlin Data to Chwecking types
+*/
 package main
 
 import (
@@ -60,7 +63,7 @@ func main() {
 		var csvRecord CSVRecord
 		const check = 0
 		for idx, value := range record {
-			fmt.Printf("VALUE: %d", value)
+			fmt.Printf("VALUE: %d\n", value)
 
 			// // check types
 			// if idx == 0 {

@@ -2,19 +2,21 @@ package main
 
 import "fmt"
 
-
 /*
 returns min value by searching thorugh index
 */
-func min(array []int, length int) int {
+func min(array []int, length int) (int, int) {
 	var index = 0
-	for i := 1; i < length; i++ {
+	var index2 = 1
+	for i := 0; i < length; i++ {
 		if array[index] > array[i] { // swap
+			index2 = index
 			index = i
+		} else if array[index2] > array[i] {
+			index2 = i
 		}
 	}
-
-	return array[index]
+	return array[index], array[index2]
 }
 
 func main() {
@@ -24,6 +26,8 @@ func main() {
 	var length = len(scores)
 
 	// nice to see this works
-	var min = min(scores, length)
+	var min, min2 = min(scores, length)
 	fmt.Printf("Min Score = %d\n", min)
+	fmt.Printf("2nd Min Score = %d\n", min2)
+
 }

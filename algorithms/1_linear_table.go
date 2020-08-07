@@ -6,7 +6,65 @@ import "fmt"
 The code here is taken from problems 1,  6, 7, 8, 11,
 */
 // Creating a one dimensional array or "Linear Table"
-func append(){}
+
+// appends value to array, we need a temp array larger than scores
+// requires an array and the value to append to that array
+func append(array []int8, val int8) []int8 {
+	var length = len(array)
+	var tempArray = make([]int8, length+1)
+
+	// copy values from scores into temp array
+	for i := 0; i < length; i++ {
+		tempArray[i] = array[i]
+	}
+	fmt.Printf("\n")
+
+	// assign value to end
+	tempArray[length] = val
+
+	// change pointer ref to temp
+	array = tempArray
+	return array
+}
+
+// insert value at arbitrary position in array
+func insert(array []int8, val int8, pos int) []int8 {
+	var length = len(array)
+	var tempArray = make([]int8, length+1)
+	fmt.Printf("\n")
+
+	// copy each value from start to position
+	// leave the pos we want to fill empty and copy each value after that
+	// eg at pos 3: 1 2 3 x 4 5 6 7 ->  1 2 3 21 4 5 6 7
+
+	for i := 0; i < length; i++ {
+		if i < pos {
+			tempArray[i] = array[i]
+		} else {
+			tempArray[i+1] = array[i]
+		}
+	}
+
+	tempArray[pos] = val
+	return tempArray
+}
+
+
+// very similar to insert at x_pos, but we do not add a value to the empty pointer location, we move vals up
+func delete(array []int8,  pos int) []int8 {
+	var length = len(array)
+	var tempArray = make([]int8, length+1)
+	fmt.Printf("\n")
+	for i := 0; i < length; i++ {
+		if i < pos {
+			tempArray[i] = array[i]
+		} else {
+			tempArray[i-1] = array[i]
+		}
+	}
+	return tempArray
+
+}
 
 func main() {
 	var scores = []int8{90, 70, 50, 80, 60, 85}
@@ -15,25 +73,32 @@ func main() {
 
 	var length = len(scores)
 
-	// append value to array, we need a temp array larger than scores
-	var tempArray = make([]int8, length+1)
-
 	// for loop printing elements in array
 	for i := 0; i < length; i++ {
 		fmt.Printf("%d ", scores[i])
 	}
+	fmt.Printf("\nSuccess!\n")
 
-	// copy values from scores into temp array
-	for i := 0; i < length; i++ {
-		tempArray[i] = scores[i]
-	}
-	fmt.Printf("\n")
-	// assign value to end
-	tempArray[length] = 75
+	scores = append(scores, 75)
 
-	// change pointer ref to temp
-	scores = tempArray
 	for i := 0; i < length+1; i++ {
+		fmt.Printf("%d ", scores[i])
+	}
+
+	fmt.Printf("\nSuccess!\n")
+
+	length = len(scores)
+	scores = insert(scores, 32, 3)
+
+	for i := 0; i < length+1; i++ {
+		fmt.Printf("%d ", scores[i])
+	}
+
+	fmt.Printf("\nSuccess!\n")
+
+	scores = delete(scores, 2)
+
+	for i := 0; i < length; i++ {
 		fmt.Printf("%d ", scores[i])
 	}
 

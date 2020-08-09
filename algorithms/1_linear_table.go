@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 /*
-The code here is taken from problems 1,  6, 7, 8, 11,
+The code here is taken from problems 1,  6, 7, 8, 10, 11
 */
 // Creating a one dimensional array or "Linear Table"
 
@@ -49,9 +49,8 @@ func insert(array []int8, val int8, pos int) []int8 {
 	return tempArray
 }
 
-
 // very similar to insert at x_pos, but we do not add a value to the empty pointer location, we move vals up
-func delete(array []int8,  pos int) []int8 {
+func delete(array []int8, pos int) []int8 {
 	var length = len(array)
 	var tempArray = make([]int8, length+1)
 	fmt.Printf("\n")
@@ -63,6 +62,24 @@ func delete(array []int8,  pos int) []int8 {
 		}
 	}
 	return tempArray
+
+}
+
+func linearSearch(array []int8, val int8) {
+	var length = len(array)
+	var found = false
+
+	for i := 0; i < length; i++ {
+		if array[i] == val {
+			found = true
+			fmt.Printf("\nFound %d at position %d", val, i)
+			break
+		}
+	}
+
+	if !found {
+		fmt.Printf("\n%d was not found in the list", val)
+	}
 
 }
 
@@ -101,6 +118,10 @@ func main() {
 	for i := 0; i < length; i++ {
 		fmt.Printf("%d ", scores[i])
 	}
+
+	fmt.Printf("\nSuccess!\n")
+
+	linearSearch(scores, 70)
 
 	fmt.Printf("\nSuccess!\n")
 

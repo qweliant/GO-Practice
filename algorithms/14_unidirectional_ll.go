@@ -124,6 +124,4 @@ func main() {
 	del(2)
 	fmt.Print("\n")
 	traversal()
-
-
 }

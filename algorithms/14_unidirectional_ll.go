@@ -39,7 +39,7 @@ func traversal() {
 			break
 		}
 
-		fmt.Println("Arriving at station", node.data)
+		fmt.Println("Arriving at station ->", node.data)
 		node = node.next
 	}
 }
@@ -87,14 +87,43 @@ func at(value string, pos int) {
 
 }
 
+func del(pos int) {
+	// * O(n)
+	var node = head
+	var prev = node
+	var i = 0
+	for {
+		if node.next == nil || i > pos-1 {
+			break
+		}
+		prev = node
+		node = node.next
+		i++
+	}
+
+	//swap nodes
+	//insert
+	prev.next = node.next
+	node.next = nil
+}
+
 func main() {
 	initialize()
-	// traversal()
+	traversal()
+	fmt.Print("\n")
+
 	add("San Diego")
 	add("Walnut")
+	traversal()
+	fmt.Print("\n")
 
-	// traversal()
 	at("Victoria", 2)
 	traversal()
+	fmt.Print("\n")
+
+	del(2)
+	fmt.Print("\n")
+	traversal()
+
 
 }

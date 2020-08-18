@@ -4,9 +4,8 @@ import "fmt"
 
 func shellSort(array []int32, length int) {
 
-	var gaps = []int32{1391376, 463792, 198768, 86961, 33936,
-		13776, 4592, 1968, 861, 336,
-		112, 48, 21, 7, 3, 1}
+	// Ciura gap sequence
+	var gaps = []int32{701, 301, 132, 57, 23, 10, 4, 1}
 
 	var r int32 = int32(length)
 	var temp int32
@@ -25,7 +24,7 @@ func shellSort(array []int32, length int) {
 
 func main() {
 
-	var scores = []int32{10, 20, 30, 40, 590, 50, 60, 70, 80, 95, 210}
+	var scores = []int32{9, 6, 5, 8, 0, 7, 4, 3, 1, 2, 210}
 	var length = len(scores)
 
 	shellSort(scores, length)

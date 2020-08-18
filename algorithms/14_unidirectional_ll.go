@@ -45,26 +45,56 @@ func traversal() {
 }
 
 func add(value string) {
+	// * O(n)
+	// var node = head
+	// for {
+	// 	if node.next == nil {
+	// 		var newNode *Node = &Node{data: value, next: nil}
+	// 		tail = newNode
+	// 		tail.next = nil
+	// 		node.next = tail
+	// 		break
+	// 	}
 
-	var node = head
-	for {
-		if node.next == nil {
-			var newNode *Node = &Node{data: value, next: nil}
-			tail = newNode
-			tail.next = nil
-			node.next = tail
-			break
-		}
+	// 	node = node.next
+	// }
 
-		fmt.Println("Arriving at station", node.data)
-		node = node.next
-	}
+	// * O(1)
+	var newNode *Node = &Node{data: value, next: nil}
+	tail.next = newNode
+	tail = newNode
 
 }
+
+func at(value string, pos int) {
+	// * O(n)
+	var node = head
+	var prev = node
+	var i = 0
+	for {
+		if node.next == nil || i > pos-1 {
+			break
+		}
+		prev = node
+		node = node.next
+		i++
+	}
+
+	var newNode *Node = &Node{data: value, next: node.next}
+	//swap nodes
+	//insert
+	prev.next = newNode
+
+}
+
 func main() {
 	initialize()
 	// traversal()
 	add("San Diego")
+	add("Walnut")
+
+	// traversal()
+	at("Victoria", 2)
 	traversal()
 
 }

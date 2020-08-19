@@ -83,6 +83,13 @@ func at(value string, pos int) {
 	var node = head
 	var i = 0
 	for {
+		if pos == 0 {
+			fmt.Println("Adding new head:", head)
+			var newNode *Node = &Node{data: value, next: head.next, prev: nil}
+			head.next.prev = newNode
+			head = newNode
+			return
+		}
 		if node.next == nil || i > pos-1 {
 			break
 		}
@@ -147,4 +154,7 @@ func main() {
 	traversal()
 	fmt.Print("-----------------------------------\n")
 
+	at("San Domingo", 0)
+	traversal()
+	fmt.Print("-----------------------------------\n")
 }

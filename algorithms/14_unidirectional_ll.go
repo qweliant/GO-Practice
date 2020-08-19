@@ -126,10 +126,12 @@ func main() {
 	traversal()
 	fmt.Print("\n")
 
-	del(2)
+	del(0)
 	fmt.Print("\n")
 	traversal()
 
 
 	fmt.Println("O(1)",head.data)
+	traversal()
+
 }

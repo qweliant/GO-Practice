@@ -46,12 +46,26 @@ func traversal() {
 
 			break
 		}
-		fmt.Println("Arriving at station ->", node.data)
+		fmt.Println("Departing station ->", node.data)
 
 		node = node.next
 	}
 	fmt.Print("\n")
-	
+
+	node = tail
+	for {
+
+		if node.prev == nil {
+			fmt.Println("Arriving at the first station ->", node.data)
+
+			break
+		}
+		fmt.Println("Departing station ->", node.data)
+
+		node = node.prev
+	}
+	fmt.Print("\n")
+
 }
 
 func addEnd(value string) {
@@ -64,37 +78,73 @@ func addEnd(value string) {
 	tail = newNode
 }
 
-// func at(value string, pos int) {
-// 	for {
+func at(value string, pos int) {
+	// * O(n)
+	var node = head
+	var i = 0
+	for {
+		if node.next == nil || i > pos-1 {
+			break
+		}
+		// prev = node
+		node = node.next
+		i++
+	}
 
-// 		if node.prev == nil {
-// 			fmt.Println("Arriving at initial station ->", node.data)
+	var newNode *Node = &Node{data: value, next: node, prev: node.prev}
+	//swap nodes
+	//insert
+	node.prev.next = newNode
+	node.prev = newNode
+}
 
-// 			break
-// 		}
-// 		fmt.Println("Arriving at station ->", node.data)
+func del(pos int) {
+	// * O(n)
+	var node = head
+	var i = 0
 
-// 		node = node.prev
-// 	}
-// 	fmt.Print("\n")
-// }
+	for {
+		if pos == 0 {
+			fmt.Println("Removing head:", head)
+			head = node.next
+			head.prev = nil
+			return
+		}
 
-// func del(pos int) {
+		if node.next == nil || i > pos-1 {
+			break
+		}
+		// prev = node
+		node = node.next
+		i++
+	}
 
-// }
+	//swap nodes
+	//insert
+	// prev.next = node.next
+	node.prev.next = node.next
+	node.next.prev = node.prev
+
+	node.next = nil
+	node.prev = nil
+}
 
 func main() {
 	initialize()
 	traversal()
+	fmt.Print("-----------------------------------\n")
 
 	addEnd("Walnut")
 	traversal()
+	fmt.Print("-----------------------------------\n")
 
-	// at("Victoria", 2)
-	// traversal()
-	// fmt.Print("\n")
+	at("Victoria", 2)
+	traversal()
+	fmt.Print("-----------------------------------\n")
 
-	// del(2)
-	// fmt.Print("\n")
-	// traversal()
+	del(0)
+	fmt.Print("\n")
+	traversal()
+	fmt.Print("-----------------------------------\n")
+
 }

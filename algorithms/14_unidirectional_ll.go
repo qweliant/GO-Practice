@@ -10,6 +10,8 @@ type Node struct {
 var head *Node = new(Node)
 var tail *Node = new(Node)
 
+
+// What is the time complexity for insertion into a linked list ? O(1)
 func initialize() {
 
 	head.data = "San Francisco"
@@ -45,7 +47,8 @@ func traversal() {
 }
 
 func add(value string) {
-	// * O(n)
+	// * O(n) because LL is of size n
+
 	// var node = head
 	// for {
 	// 	if node.next == nil {
@@ -63,6 +66,8 @@ func add(value string) {
 	var newNode *Node = &Node{data: value, next: nil}
 	tail.next = newNode
 	tail = newNode
+
+	// hera an ll, add somethin to it vs look at all values
 
 }
 
@@ -124,4 +129,7 @@ func main() {
 	del(2)
 	fmt.Print("\n")
 	traversal()
+
+
+	fmt.Println("O(1)",head.data)
 }

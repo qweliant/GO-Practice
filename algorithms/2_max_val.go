@@ -1,5 +1,3 @@
-package main
-
 import "fmt"
 
 // sort array in ascending order and return max val

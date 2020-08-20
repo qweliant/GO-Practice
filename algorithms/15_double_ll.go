@@ -1,5 +1,4 @@
 package main
-
 import "fmt"
 
 type Node struct {
@@ -136,25 +135,25 @@ func del(pos int) {
 	node.prev = nil
 }
 
-func main() {
-	initialize()
-	traversal()
-	fmt.Print("-----------------------------------\n")
+// func main() {
+// 	initialize()
+// 	traversal()
+// 	fmt.Print("-----------------------------------\n")
 
-	addEnd("Walnut")
-	traversal()
-	fmt.Print("-----------------------------------\n")
+// 	addEnd("Walnut")
+// 	traversal()
+// 	fmt.Print("-----------------------------------\n")
 
-	at("Victoria", 2)
-	traversal()
-	fmt.Print("-----------------------------------\n")
+// 	at("Victoria", 2)
+// 	traversal()
+// 	fmt.Print("-----------------------------------\n")
 
-	del(0)
-	fmt.Print("\n")
-	traversal()
-	fmt.Print("-----------------------------------\n")
+// 	del(0)
+// 	fmt.Print("\n")
+// 	traversal()
+// 	fmt.Print("-----------------------------------\n")
 
-	at("San Domingo", 0)
-	traversal()
-	fmt.Print("-----------------------------------\n")
-}
+// 	at("San Domingo", 0)
+// 	traversal()
+// 	fmt.Print("-----------------------------------\n")
+// }

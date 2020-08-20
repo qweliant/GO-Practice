@@ -45,7 +45,6 @@ func pop() *Node {
 	node.prev = nil
 	size--
 	return node
-
 }
 
 // pops each node off LL

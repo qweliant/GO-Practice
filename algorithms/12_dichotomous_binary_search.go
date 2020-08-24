@@ -4,13 +4,15 @@ import "fmt"
 // Today I will be doing Dichotomous Bin search
 
 func binSearch(array []int, val int) int {
-
+2
 	var length = len(array)
 	var low = 0
 	var high = length - 1
-	var mid = (high + low) / 2
+	var mid = (high + low) / 
 	fmt.Printf("Indices %d %d %d ", low, mid, high)
 
+
+	// log n
 	for {
 		if array[mid] == val {
 			return mid

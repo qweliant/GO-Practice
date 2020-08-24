@@ -33,9 +33,10 @@ func at(value string, pos int) {
 	for {
 		if pos == 0 {
 			fmt.Println("Adding new head:", head)
-			var newNode *Node = &Node{data: value, next: head.next, prev: tail}
-			head.next.prev = newNode
+			var newNode *Node = &Node{data: value, next: head}
+			tail.next = newNode
 			head = newNode
+
 			return
 		}
 		if node.next == nil || i > pos-1 {
@@ -46,15 +47,38 @@ func at(value string, pos int) {
 		i++
 	}
 
-	var newNode *Node = &Node{data: value, next: node, prev: node.prev}
+	var newNode *Node = &Node{data: value, next: node.next}
 	//swap nodes
 	//insert
-	node.prev.next = newNode
-	node.prev = newNode
+	node.next = newNode
 }
 
-func delete(){
+func delete(pos int) {
+	// * O(n)
+	var node = head
+	var prev = node
 
+	var i = 0
+	for {
+		if pos == 0 {
+			fmt.Println("Deleting head:", head)
+			head = node.next
+			tail.next = head
+
+			return
+		}
+		if node.next == nil || i > pos-1 {
+			break
+		}
+
+		node = node.next
+		i++
+	}
+
+	//swap nodes
+	//insert
+	prev.next = node.next
+	node.next = nil
 }
 
 func output(node *Node) {
@@ -71,5 +95,13 @@ func output(node *Node) {
 
 func main() {
 	initial()
+
+	fmt.Printf("Insert new node E\n")
+	at("E", 2)
 	output(head)
+	at("H", 0)
+	output(head)
+	delete(0)
+	output(head)
+
 }

@@ -52,7 +52,72 @@ func output() {
 	fmt.Printf(" Ended at tail %s\n\n", point.data)
 }
 
+func at(value string, pos int) {
+	// * O(n)
+	var node = head
+	var i = 0
+	for {
+		if pos == 0 {
+			fmt.Println("Adding new head:", head)
+			var newNode *Node = &Node{data: value, next: head, prev: tail}
+			tail.next = newNode
+			head = newNode
+
+			return
+		}
+		if node.next == nil || i > pos-1 {
+			break
+		}
+		// prev = node
+		node = node.next
+		i++
+	}
+
+	var newNode *Node = &Node{data: value, next: node.next, prev: node}
+	//swap nodes
+	//insert
+	node.next = newNode
+	newNode.next.prev = newNode
+}
+
+func delete(pos int) {
+	// * O(n)
+	var node = head
+
+	var i = 0
+	for {
+		if pos == 0 {
+			fmt.Println("Deleting head:", head)
+			head = node.next
+			tail.next = head
+
+			return
+		}
+		if node.next == nil || i > pos-1 {
+			break
+		}
+
+		node = node.next
+		i++
+	}
+
+	//swap nodes
+	//insert
+	
+	var temp = node.next
+	node.next = node.next.next
+	node.next.prev = node
+	temp.next= nil
+	temp.prev = nil
+
+}
+
 func main() {
 	initial()
+	at("H", 0)
+	at("E", 2)
 	output()
+	delete(2)
+	output()
+
 }

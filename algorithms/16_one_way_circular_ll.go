@@ -26,6 +26,37 @@ func initial() {
 
 }
 
+func at(value string, pos int) {
+	// * O(n)
+	var node = head
+	var i = 0
+	for {
+		if pos == 0 {
+			fmt.Println("Adding new head:", head)
+			var newNode *Node = &Node{data: value, next: head.next, prev: tail}
+			head.next.prev = newNode
+			head = newNode
+			return
+		}
+		if node.next == nil || i > pos-1 {
+			break
+		}
+		// prev = node
+		node = node.next
+		i++
+	}
+
+	var newNode *Node = &Node{data: value, next: node, prev: node.prev}
+	//swap nodes
+	//insert
+	node.prev.next = newNode
+	node.prev = newNode
+}
+
+func delete(){
+
+}
+
 func output(node *Node) {
 	var point = node
 	for {

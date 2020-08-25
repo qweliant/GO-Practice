@@ -1,3 +1,4 @@
+package main
 import "fmt"
 
 func shellSort(array []int32, length int) {

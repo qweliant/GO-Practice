@@ -21,10 +21,10 @@ func insert(value int, node *Node) {
 		return
 	}
 
-	var comp = value - node.data
+	// var comp = value - node.data
 
 	// * Go to the right
-	if comp > 0 {
+	if value > leaf.data {
 		if node.right == nil {
 			// * cretat a new node
 			node.right = newNode(value)
@@ -32,7 +32,7 @@ func insert(value int, node *Node) {
 			insert(value, node.right)
 		}
 		// * Go to the left
-	} else if comp < 0 {
+	} else if value < leaf.data {
 		if node.left == nil {
 			// * create a new node
 			node.left = newNode(value)
@@ -43,24 +43,24 @@ func insert(value int, node *Node) {
 }
 
 // traversal in order
-func inOrder(node *Node) {
+func inOrder(leaf *Node) {
 
-	if node == nil {
+	if leaf == nil {
 		return
 	}
-	inOrder(node.left)
-	fmt.Printf("%d\n", node.data)
-	inOrder(node.right)
+	inOrder(leaf.left)
+	fmt.Printf("%d\n", leaf.data)
+	inOrder(leaf.right)
 }
 
-func postOrder(node *Node) {
+func postOrder(leaf *Node) {
 
-	if node == nil {
+	if leaf == nil {
 		return
 	}
-	postOrder(node.right)
-	postOrder(node.left)
-	fmt.Printf("%d\n", node.data)
+	postOrder(leaf.right)
+	postOrder(leaf.left)
+	fmt.Printf("%d\n", leaf.data)
 }
 
 func min(node *Node) *Node {
@@ -83,7 +83,13 @@ func max(node *Node) *Node {
 	return max(node.right)
 }
 
+// func delete(value int, node *Node) *Node{
+// 	if node == nil{
+// 		return node
+// 	}
 
+// 	var comp = value -
+// }
 
 func main() {
 	insert(21, leaf)
@@ -94,15 +100,16 @@ func main() {
 	insert(160, leaf)
 	insert(150, leaf)
 
-	fmt.Print("*************In order traversal (L -> R)****************") 
+	fmt.Print("\n")
 	inOrder(leaf)
 
-	fmt.Print("*************Post order traversal (R -> L)**************")
+	fmt.Print("\n")
 	postOrder(leaf)
 
 	var Min = max(leaf)
 	var Max = min(leaf)
 
-	fmt.Print("Min", Min, Max)
+	fmt.Print("\nMin ", Min)
+	fmt.Print("Max ", Max)
 
 }

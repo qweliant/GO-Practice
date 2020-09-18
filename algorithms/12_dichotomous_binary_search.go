@@ -1,11 +1,9 @@
 package main
-
 import "fmt"
 
 // Today I will be doing Dichotomous Bin search
 
 func binSearch(array []int, val int) int {
-2
 	var length = len(array)
 	var low = 0
 	var high = length - 1
@@ -20,17 +18,14 @@ func binSearch(array []int, val int) int {
 		} else if array[mid] > val {
 			high = mid - 1
 			mid = (high + low) / 2
-
 		} else if array[mid] < val {
 			low = mid + 1
 			mid = (high + low) / 2
-
 		} else if low >= high {
 			fmt.Printf("Not Found")
 			return -1
 		}
 	}
-
 }
 
 func main() {

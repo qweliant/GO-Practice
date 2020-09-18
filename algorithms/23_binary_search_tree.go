@@ -21,23 +21,23 @@ func insert(value int, node *Node) {
 		return
 	}
 
-	// var comp = value - node.data
+	var comp = value - node.data
 
 	// * Go to the right
-	if value > leaf.data {
-		if node.right == nil {
-			// * cretat a new node
-			node.right = newNode(value)
-		} else {
-			insert(value, node.right)
-		}
-		// * Go to the left
-	} else if value < leaf.data {
+	if comp < 0 {
 		if node.left == nil {
-			// * create a new node
+			// * cretat a new node
 			node.left = newNode(value)
 		} else {
 			insert(value, node.left)
+		}
+		// * Go to the left
+	} else if comp > 0 {
+		if node.right == nil {
+			// * create a new node
+			node.right = newNode(value)
+		} else {
+			insert(value, node.right)
 		}
 	}
 }
@@ -48,7 +48,7 @@ func inOrder(leaf *Node) {
 	if leaf == nil {
 		return
 	}
-	inOrder(leaf.left)
+	inOrder(leaf.left) // left to right, and is really dft
 	fmt.Printf("%d\n", leaf.data)
 	inOrder(leaf.right)
 }
@@ -92,24 +92,26 @@ func max(node *Node) *Node {
 // }
 
 func main() {
-	insert(21, leaf)
+	insert(60, leaf)
+	insert(40, leaf)
 	insert(20, leaf)
-	insert(19, leaf)
-	insert(18, leaf)
-	insert(170, leaf)
-	insert(160, leaf)
-	insert(150, leaf)
+	insert(10, leaf)
+	insert(30, leaf)
+	insert(50, leaf)
+	insert(80, leaf)
+	insert(70, leaf)
+	insert(90, leaf)
 
-	fmt.Print("\n")
+	fmt.Print("In order printing \n")
 	inOrder(leaf)
 
-	fmt.Print("\n")
-	postOrder(leaf)
+	// fmt.Print("\n")
+	// postOrder(leaf)
 
-	var Min = max(leaf)
-	var Max = min(leaf)
+	// var Min = max(leaf)
+	// var Max = min(leaf)
 
-	fmt.Print("\nMin ", Min)
-	fmt.Print("Max ", Max)
+	// fmt.Print("\nMin ", Min)
+	// fmt.Print("Max ", Max)
 
 }

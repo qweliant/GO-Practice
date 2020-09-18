@@ -133,6 +133,8 @@ func del(pos int) {
 
 	node.next = nil
 	node.prev = nil
+
+
 }
 
 func main() {

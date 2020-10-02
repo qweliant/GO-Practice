@@ -89,7 +89,7 @@ func get(key string) string{
 }
 
 func main(){
-	put("david", "Nigga is a murderer")
+	put("david", "King is a murderer")
 	put("grace", "Damali's friend")
 
 	fmt.Printf("david => %s \n", get("david"))

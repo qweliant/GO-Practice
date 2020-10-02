@@ -65,14 +65,14 @@ func main() {
 	fmt.Printf("After the heap is made")
 	makeHeap(values, length)
 	for i := 0; i < length; i++{
-		fmt.Printf("%d", values[i])
+		fmt.Printf("%d ", values[i])
 	}
 	fmt.Printf("\n\n")
 
 	fmt.Printf("After the heap is sorted")
 	heapSort(values, length)
 	for i := 0; i < length; i++{
-		fmt.Printf("%d", values[i])
+		fmt.Printf("%d ", values[i])
 	}
 
 

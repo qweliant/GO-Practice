@@ -12,3 +12,5 @@ you can also run:
 
 if you do not want to repeatedly build executable
 
+resources:
+https://gobyexample.com/

@@ -1,11 +1,13 @@
-
+package main
 
 import "fmt"
 
 func bubble(arr []int, length int) {
-	for i := 0; i < length-1; i++ {
-		for j := 0; j < length-i-1; j++ {
+	for i := 0; i < length-1; i++ { 
+		for j := 0; j < length-i-1; j++ { 
 			if arr[j] > arr[j+1] {
+				// at pos 0 if pos 1 is less than value
+				// swap the postions
 				var temp = arr[j]
 				arr[j] = arr[j+1]
 				arr[j+1] = temp
